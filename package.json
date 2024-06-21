@@ -1,0 +1,27 @@
+{
+  "name": "termchat",
+  "version": "0.2.0",
+  "description": "Npm package to securely chat with your friend through your CLI.",
+  "scripts": {
+    "host": "node ./server/server.js",
+    "join": "node ./client/client.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/achhayapathak/termchat.git"
+  },
+  "keywords": [
+    "chat",
+    "chat-room",
+    "cli-chat",
+    "chat-app",
+    "terminal-chat",
+    "terminal"
+  ],
+  "author": "Achhaya Pathak",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/achhayapathak/termchat/issues"
+  },
+  "homepage": "https://github.com/achhayapathak/termchat#readme"
+}
