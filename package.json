@@ -1,6 +1,6 @@
 {
-  "name": "termchat",
-  "version": "0.2.0",
+  "name": "termtalk",
+  "version": "1.0.0",
   "description": "Npm package to securely chat with your friend through your CLI.",
   "scripts": {
     "host": "node ./server/server.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/achhayapathak/termchat.git"
+    "url": "git+https://github.com/achhayapathak/termtalk.git"
   },
   "keywords": [
     "chat",
@@ -21,7 +21,11 @@
   "author": "Achhaya Pathak",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/achhayapathak/termchat/issues"
+    "url": "https://github.com/achhayapathak/termtalk/issues"
   },
-  "homepage": "https://github.com/achhayapathak/termchat#readme"
+  "homepage": "https://github.com/achhayapathak/termtalk#readme",
+  "dependencies": {
+    "socket.io": "^4.7.5",
+    "socket.io-client": "^4.7.5"
+  }
 }
