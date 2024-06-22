@@ -15,6 +15,7 @@ socket.on('connect', () => {
   console.log('Connected to server');
   rl.question('Enter your name: ', name => {
     console.log(`Welcome, ${name}!`);
+    socket.emit('setUsername', name);
     startChat(name, socket, rl);
   });
 });

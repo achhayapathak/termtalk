@@ -11,5 +11,10 @@ io.on('connect', socket => {
   
     socket.on('disconnect', () => {
       console.log('A user disconnected');
+      io.emit('bye-bye', { message: `${socket.username} has left the chat.` });
+    });
+
+    socket.on('setUsername', username => {
+      socket.username = username; // Set the username for the socket
     });
   });
