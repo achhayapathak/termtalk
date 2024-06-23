@@ -1,6 +1,6 @@
 {
   "name": "termtalk",
-  "version": "1.3.4",
+  "version": "1.3.5",
   "description": "Npm package to securely chat with your friend through your CLI.",
   "scripts": {
     "host": "node ./server/server.js",
