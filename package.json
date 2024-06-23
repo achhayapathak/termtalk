@@ -29,6 +29,8 @@
   },
   "homepage": "https://github.com/achhayapathak/termtalk#readme",
   "dependencies": {
+    "portscanner": "^2.2.0",
+    "prompt": "^1.3.0",
     "socket.io": "^4.7.5",
     "socket.io-client": "^4.7.5"
   }
