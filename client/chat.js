@@ -1,4 +1,3 @@
-
 const startChat = (name, socket, rl) => {
   rl.on("line", (input) => {
     socket.emit("message", { name, message: input });
