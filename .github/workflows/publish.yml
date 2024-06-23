@@ -27,12 +27,6 @@ jobs:
       - name: Create a build
         run: npm link
 
-      - name: Run the server
-        run: tt-host
-
-      - name: Run the client
-        run: tt-join
-
       - name: Publish to NPM
         run: npm publish
         env: 
