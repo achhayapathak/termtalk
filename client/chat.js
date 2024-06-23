@@ -10,6 +10,10 @@ const startChat = (name, socket, rl) => {
     }
   });
 
+  socket.on("bye-bye", (data) => {
+      console.log(`${data.message}`);
+  });
+
   socket.on("disconnect", () => {
     console.log("Disconnected from server");
     rl.close();
