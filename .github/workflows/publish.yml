@@ -1,0 +1,39 @@
+name: Publish-to-npm
+
+on:
+  pull_request:
+    branches: [main]
+    types: 
+      - closed
+
+  push:
+    branches: [main]
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Create a build
+        run: npm link
+
+      - name: Run the server
+        run: tt-host
+
+      - name: Run the client
+        run: tt-join
+
+      - name: Publish to NPM
+        run: npm publish
+        env: 
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
