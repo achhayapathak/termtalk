@@ -25,11 +25,8 @@ jobs:
       - name: Create a build
         run: npm link
 
-      - name: Loggin in to NPM
-        run: npm adduser
+      - name: Publishing the package
+        run: npm publish
         env: 
           NPM_EMAIL: ${{ vars.EMAIL }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Publishing the package
-        run: npm publish
