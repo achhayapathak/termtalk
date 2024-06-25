@@ -4,25 +4,23 @@ const ioClient = require('socket.io-client');
 const readline = require('readline');
 
 const startChat = require('./chat');
-const promptPort = require('./promptPort');
-
+const promptServerDetails = require('./promptUrl')
 
 const connectToServer = () => {
-
-    promptPort((PORT) => {
-        if(PORT) {
+    promptServerDetails((url) => {
+        if (url) {
             const rl = readline.createInterface({
                 input: process.stdin,
                 output: process.stdout
             });
 
-            console.log(`Trying to connect to server on PORT ${PORT} ...`);
+            console.log(`Trying to connect to server at ${url} ...`);
 
-            const socket = ioClient.connect(`http://127.0.0.1:${PORT}`);
+            const socket = ioClient.connect(`${url}`);
 
-            // handle successful connections 
+            // Handle successful connections
             socket.on('connect', () => {
-                console.log(`Connected to server on PORT ${PORT}`);
+                console.log(`Connected to server at ${url}`);
                 rl.question('Enter your name: ', name => {
                     console.log(`Welcome, ${name}!`);
                     socket.emit('setUsername', name);
@@ -30,20 +28,19 @@ const connectToServer = () => {
                 });
             });
 
-            // handle connection error when no server is hosted on user defined port
+            // Handle connection error when no server is hosted on the specified port
             socket.on('connect_error', () => {
-                console.log(`\nNo Server is hosted on this PORT ${PORT}, please try a different port`)
-                socket.close()
-                rl.close()
-                connectToServer()
-            })
+                console.log(`\nNo server is hosted at ${url}:${port}, please try a different URL or port`);
+                socket.close();
+                rl.close();
+                connectToServer();
+            });
 
         } else {
-            console.log('Failed to connect to server server');
+            console.log('Failed to connect to server');
             return;
         }
     });
-
 };
 
-connectToServer()
+connectToServer();

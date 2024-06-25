@@ -3,9 +3,9 @@
 const io = require('socket.io');
 
 const getPortNumber = require('./getPort');
-
+const createTunnel = require('./createTunnel');
 // check if port is valid
-getPortNumber((PORT) => {
+getPortNumber(async (PORT) => {
     if(PORT) {
         // create socket.io server with user given PORT
         const server = io(PORT);
@@ -26,7 +26,11 @@ getPortNumber((PORT) => {
             socket.on('setUsername', username => {
                 socket.username = username; // Set the username for the socket
             });
+
         });
+
+        // create a public URL
+        createTunnel(PORT);
     } else {
         console.log('Failed to start server');
         return;
