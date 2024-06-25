@@ -16,5 +16,6 @@ io.on('connect', socket => {
 
     socket.on('setUsername', username => {
       socket.username = username; // Set the username for the socket
+      io.emit('message', { name: 'Server', message: `${username} has joined the server.` }); // Broadcast join message
     });
   });
