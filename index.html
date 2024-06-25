@@ -1,0 +1,31 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket.IO Client</title>
+    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js"></script>
+    <script>
+        const socket = io('http://localhost:12345'); // Replace with your server's address
+
+        socket.on('connect', () => {
+            console.log('Connected to server');
+
+            // Example: Sending a message to the server
+            socket.emit('message', { name: 'Client', message: 'Hello from client!' });
+        });
+
+        socket.on('message', (data) => {
+            console.log(`Message received: ${data.message}`);
+        });
+
+        socket.on('disconnect', () => {
+            console.log('Disconnected from server');
+        });
+    </script>
+</head>
+<body>
+    <h1>Socket.IO Client</h1>
+</body>
+</html>

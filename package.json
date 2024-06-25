@@ -34,5 +34,6 @@
     "gradient-string": "^2.0.2",
     "socket.io": "^4.7.5",
     "socket.io-client": "^4.7.5"
-  }
+  },
+  "main": "index.js"
 }

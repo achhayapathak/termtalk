@@ -11,11 +11,12 @@ io.on('connect', socket => {
   
     socket.on('disconnect', () => {
       console.log('A user disconnected');
-      io.emit('bye-bye', { message: `${socket.username} has left the chat.` });
+      socket.broadcast.emit('message', { name: 'Server', message: `${socket.username} has left the server.` });
     });
 
     socket.on('setUsername', username => {
       socket.username = username; // Set the username for the socket
-      io.emit('message', { name: 'Server', message: `${username} has joined the server.` }); // Broadcast join message
+      //io.emit('message', { name: 'Server', message: `${username} has joined the server.` }); // Broadcast join message
+      socket.broadcast.emit('message', { name: 'Server', message: `${socket.username} has joined the server.` });
     });
   });
