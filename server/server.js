@@ -16,5 +16,6 @@ io.on('connect', socket => {
 
     socket.on('setUsername', username => {
       socket.username = username; // Set the username for the socket
+      io.emit('bye-bye', { message: `${socket.username} has joined the chat.` });
     });
   });
