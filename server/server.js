@@ -9,7 +9,7 @@ getPortNumber(async (PORT) => {
     if(PORT) {
         // create socket.io server with user given PORT
         const server = io(PORT);
-        console.log(`Server started on PORT ${PORT}\nWaiting for users to connect`);
+        console.log(`Waiting for server links to generate ...`);
 
         server.on('connect', socket => {
             console.log('A user connected');
