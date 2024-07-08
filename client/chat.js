@@ -1,4 +1,3 @@
-
 const startChat = (name, socket, rl) => {
   rl.on("line", (input) => {
     socket.emit("message", { name, message: input });
@@ -9,6 +8,12 @@ const startChat = (name, socket, rl) => {
       console.log(`${data.name}: ${data.message}`);
     }
   });
+
+  socket.on("welcome", (data) => {
+    if(data.username !== name) {
+      console.log(`${data.message}`);
+    }
+});
 
   socket.on("bye-bye", (data) => {
       console.log(`${data.message}`);
