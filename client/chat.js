@@ -9,6 +9,12 @@ const startChat = (name, socket, rl) => {
     }
   });
 
+  socket.on("welcome", (data) => {
+    if(data.username !== name) {
+      console.log(`${data.message}`);
+    }
+});
+
   socket.on("bye-bye", (data) => {
       console.log(`${data.message}`);
   });

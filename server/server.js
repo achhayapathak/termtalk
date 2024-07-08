@@ -18,14 +18,16 @@ getPortNumber(async (PORT) => {
                 server.emit('message', data); // Broadcast the received message to all connected clients
             });
 
-            socket.on('disconnect', () => {
-                console.log('A user disconnected');
-                server.emit('bye-bye', { message: `${socket.username} has left the chat.` });
+            socket.on('setUsername', username => {
+              socket.username = username; // Set the username for the socket
+              server.emit('welcome', { username, message: `${username} has joined the chat!`}); 
+
             });
 
-            socket.on('setUsername', username => {
-                socket.username = username; // Set the username for the socket
-            });
+            socket.on('disconnect', () => {
+              console.log('A user disconnected');
+              server.emit('bye-bye', { message: `${socket.username} has left the chat.` });
+          });
 
         });
 
