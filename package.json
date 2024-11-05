@@ -30,7 +30,7 @@
   "homepage": "https://github.com/achhayapathak/termtalk#readme",
   "dependencies": {
     "chalk": "^5.3.0",
-    "figlet": "^1.7.0",
+    "figlet": "^1.8.0",
     "gradient-string": "^2.0.2",
     "localtunnel": "^2.0.2",
     "portscanner": "^2.2.0",
