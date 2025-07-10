@@ -4,9 +4,10 @@ const io = require('socket.io');
 
 const getPortNumber = require('./getPort');
 const createTunnel = require('./createTunnel');
+const colorAmt = 140;
 // check if port is valid
 getPortNumber(async (PORT) => {
-    if(PORT) {
+    if (PORT) {
         // create socket.io server with user given PORT
         const server = io(PORT);
         console.log(`Waiting for server links to generate ...`);
@@ -19,15 +20,17 @@ getPortNumber(async (PORT) => {
             });
 
             socket.on('setUsername', username => {
-              socket.username = username; // Set the username for the socket
-              server.emit('welcome', { username, message: `${username} has joined the chat!`}); 
+                socket.username = username; // Set the username for the socket
+                socket.color = Math.floor(Math.random() * colorAmt);
+
+                server.emit('user-join', { username, message: `${username} has joined the chat!`, color: socket.color });
 
             });
 
             socket.on('disconnect', () => {
-              console.log('A user disconnected');
-              server.emit('bye-bye', { message: `${socket.username} has left the chat.` });
-          });
+                console.log('A user disconnected');
+                server.emit('bye-bye', { message: `${socket.username ? socket.username : "A user"} has left the chat.` });
+            });
 
         });
 
