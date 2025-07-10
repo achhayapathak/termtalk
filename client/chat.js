@@ -13,6 +13,7 @@ const startChat = (name, socket, rl) => {
       console.log(`${data.name}: ${data.message}`.createRoundedBorder(data.color ? colors[data.color].toString() : "white"));
     } else {
       process.stdout.moveCursor(0, -1);
+      process.stdout.clearLine();
       console.log(`${data.name}: ${data.message}`.createRoundedBorder(myColorIndex ? colors[myColorIndex].toString() : "white"));
     }
   });
