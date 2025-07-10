@@ -24,6 +24,7 @@ const startChat = (name, socket, rl) => {
       myColorIndex = data.color
       console.log(`${data.message}`.color("green").createDottedBorder("green"));
     }
+  });
 
   //User has left chat
   socket.on("bye-bye", (data) => {
