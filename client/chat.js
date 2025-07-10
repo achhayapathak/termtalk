@@ -3,7 +3,8 @@ const { colors } = require("../utils/colorList.json");
 let myColorIndex;
 const startChat = (name, socket, rl) => {
   rl.on("line", (input) => {
-    socket.emit("message", { name, message: input, color: myColorIndex ? myColorIndex : 0 });
+    const formattedMessage = input.match(/.{1,50}/g).join("<>");
+    socket.emit("message", { name, message: formattedMessage, color: myColorIndex ? myColorIndex : 0 });
   });
 
   // Handle messages from server, but also has fallback if using older versions of termtalk by giving them a basic white frame
