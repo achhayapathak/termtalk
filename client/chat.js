@@ -3,6 +3,7 @@ const { colors } = require("../utils/colorList.json");
 let myColorIndex;
 const startChat = (name, socket, rl) => {
   rl.on("line", (input) => {
+    if (!input.length > 0) return
     const formattedMessage = input.match(/.{1,50}/g).join("<>");
     socket.emit("message", { name, message: formattedMessage, color: myColorIndex ? myColorIndex : 0 });
   });
